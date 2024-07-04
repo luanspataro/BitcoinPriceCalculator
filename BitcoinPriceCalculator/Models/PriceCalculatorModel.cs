@@ -7,7 +7,10 @@ namespace BitcoinPriceCalculator.Models
 {
     public class PriceCalculatorModel
     {
-        public int Currency { get; set; }
+        private double BTCAmount { get; set; }
+        private double Profit { get; set; }
+
+        public string Currency { get; set; }
         public int ActualPrice { get; set; }
         public DateTime PurchaseDate { get; set; }
 
