@@ -9,17 +9,35 @@ namespace BitcoinPriceCalculator.Models
 {
     public class BitcoinService
     {
+
+        public static string BtcCalc(DateTime userDate)
+        {
+            var sheet = ReadXls();
+
+            foreach (var item in sheet)
+            {
+                if (item.PriceDate.ToShortDateString() == userDate.ToShortDateString())
+                {
+                    Console.WriteLine($"Preco: {item.Price} \nData: {item.PriceDate}\n");
+                    return Convert.ToString(item.PriceDate);
+                }
+            }
+
+            throw new InvalidOperationException("Data não encontrada");
+
+        }
+
         private static List<Bitcoin> ReadXls()
         {
             var response = new List<Bitcoin>();
 
-            FileInfo existingFile = new FileInfo(fileName:"\Models\BitcoinDatePriceBRL");
+            FileInfo existingFile = new FileInfo(@"\Models\BitcoinDatePriceBRL.xlsx");
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
             using (ExcelPackage package = new ExcelPackage(existingFile))
             {
-                ExcelWorksheet worksheet = package.Workbook.Worksheets[PositionID: 0];
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
                 int colCount = worksheet.Dimension.End.Column;
 
                 int rowCount = worksheet.Dimension.End.Row;
