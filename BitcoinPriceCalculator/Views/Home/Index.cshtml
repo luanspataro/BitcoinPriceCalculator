@@ -1,4 +1,6 @@
-﻿@{
+﻿@model BitcoinPriceCalculator.Models.PriceCalculatorModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -26,22 +28,23 @@
                         <a href="#" class="btn btn-brand me-2">Comece Agora</a>
                         <a href="#" class="btn btn-light ms-2">Nosso Teste</a>
                     </div>
-                    <form asp-action="Index" asp-controller="Home" method="post">
+
+                    <form asp-action="Index" asp-controller="Bitcoin" method="post">
                         <div class="form-group">
-                            <label asp-for="ChosenDate" class="control-label"></label>
-                            <input asp-for="ChosenDate" class="form-control" />
-                            <span asp-validation-for="ChosenDate" class="text-danger"></span>
+                            <label asp-for="PurchaseDate" class="control-label"></label>
+                            <input asp-for="PurchaseDate" class="form-control"/>
+                            <span asp-validation-for="PurchaseDate" class="text-danger"></span>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
 
                     @if (!string.IsNullOrEmpty(ViewBag.BtcPrice))
                     {
-                <div>
-                    <h4>Preço do Bitcoin:</h4>
-                    <p>R$ @ViewBag.BtcPrice</p>
-                </div>
-                }
+                        <div>
+                            <h4>Preço do Bitcoin:</h4>
+                            <p>R$ @ViewBag.BtcPrice</p>
+                        </div>
+                    }
 
                 </div>
             </div>
@@ -54,7 +57,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <div class="section-title">
-                        
+
 
 
 

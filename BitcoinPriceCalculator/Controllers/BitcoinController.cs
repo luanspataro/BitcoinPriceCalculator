@@ -9,21 +9,36 @@ namespace BitcoinPriceCalculator.Controllers
 {
     public class BitcoinController : Controller
     {
+        private readonly BitcoinService _bitcoinService;
+        
+        public BitcoinController(BitcoinService bitcoinService)
+        {
+            _bitcoinService = bitcoinService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View(new PriceCalculatorModel());
         }
 
         [HttpPost]
-        public IActionResult Index(DatePicker model)
+        public IActionResult Index(PriceCalculatorModel model)
         {
             if (ModelState.IsValid)
             {
-                //decimal btcPrice = model.BtcCalc();
-                //ViewBag.BtcPrice = btcPrice;
+                try
+                {
+                    decimal btcPrice = _bitcoinService.BtcCalc(model.PurchaseDate);
+                    ViewBag.BtcPrice = btcPrice.ToString("C2", new System.Globalization.CultureInfo("pt-BR"));
 
-                return View();
+                    return View(model);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"Erro: {ex.Message}");
+                }
             }
+
             return View(model);
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BitcoinPriceCalculator.Models
 {
@@ -12,6 +13,11 @@ namespace BitcoinPriceCalculator.Models
 
         public string Currency { get; set; }
         public int ActualPrice { get; set; }
+
+
+        [Display(Name = "Selecione uma data")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Por favor, selecione uma data.")]
         public DateTime PurchaseDate { get; set; }
 
     }

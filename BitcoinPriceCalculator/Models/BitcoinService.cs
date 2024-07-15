@@ -10,7 +10,7 @@ namespace BitcoinPriceCalculator.Models
     public class BitcoinService
     {
 
-        public static string BtcCalc(DateTime userDate)
+        public decimal BtcCalc(DateTime userDate)
         {
             var sheet = ReadXls();
 
@@ -19,7 +19,7 @@ namespace BitcoinPriceCalculator.Models
                 if (item.PriceDate.ToShortDateString() == userDate.ToShortDateString())
                 {
                     Console.WriteLine($"Preco: {item.Price} \nData: {item.PriceDate}\n");
-                    return Convert.ToString(item.PriceDate);
+                    return item.Price;
                 }
             }
 
