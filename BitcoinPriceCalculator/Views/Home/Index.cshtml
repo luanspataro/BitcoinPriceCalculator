@@ -32,7 +32,7 @@
                     <form asp-action="Index" asp-controller="Bitcoin" method="post">
                         <div class="form-group">
                             <label asp-for="PurchaseDate" class="control-label"></label>
-                            <input asp-for="PurchaseDate" class="form-control"/>
+                            <input asp-for="PurchaseDate" class="form-control" />
                             <span asp-validation-for="PurchaseDate" class="text-danger"></span>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
@@ -45,6 +45,7 @@
                             <p>R$ @ViewBag.BtcPrice</p>
                         </div>
                     }
+
 
                 </div>
             </div>
@@ -75,23 +76,5 @@
             </div>
         </div>
     </section>
-
-    <div class="area">
-        <ul class="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

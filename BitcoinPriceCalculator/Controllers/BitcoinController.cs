@@ -31,7 +31,7 @@ namespace BitcoinPriceCalculator.Controllers
                     decimal btcPrice = _bitcoinService.BtcCalc(model.PurchaseDate);
                     ViewBag.BtcPrice = btcPrice.ToString("C2", new System.Globalization.CultureInfo("pt-BR"));
 
-                    return View(model);
+                    return View("~/Views/Home/Index.cshtml", model);
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -39,7 +39,7 @@ namespace BitcoinPriceCalculator.Controllers
                 }
             }
 
-            return View(model);
+            return View("~/Views/Home/Index.cshtml", model);
         }
     }
 }

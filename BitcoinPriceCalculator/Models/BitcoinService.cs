@@ -31,7 +31,7 @@ namespace BitcoinPriceCalculator.Models
         {
             var response = new List<Bitcoin>();
 
-            FileInfo existingFile = new FileInfo(@"\Models\BitcoinDatePriceBRL.xlsx");
+            FileInfo existingFile = new FileInfo(@"X:\repositorios\Luan\BitcoinPriceCalculator\BitcoinPriceCalculator\Models\BitcoinDatePriceBRL.xlsx");
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
@@ -45,7 +45,15 @@ namespace BitcoinPriceCalculator.Models
                 for (int row = 2; row <= rowCount; row++)
                 {
                     var bitcoin = new Bitcoin();
-                    bitcoin.Price = Convert.ToDecimal(worksheet.Cells[row, Col: 1].Value);
+                    try
+                    {
+                        bitcoin.Price = Convert.ToDecimal(worksheet.Cells[row, 1].Value);
+                    }
+                    catch (FormatException ex)
+                    {
+                        throw new InvalidOperationException("Erro ao converter valor da célula para decimal.", ex);
+                    }
+
                     bitcoin.PriceDate = Convert.ToDateTime(worksheet.Cells[row, Col: 2].Value);
 
                     response.Add(bitcoin);

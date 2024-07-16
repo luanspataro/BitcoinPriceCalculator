@@ -1,3 +1,5 @@
+using BitcoinPriceCalculator.Models;
+using BitcoinPriceCalculator.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,7 @@ namespace BitcoinPriceCalculator
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<BitcoinService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
