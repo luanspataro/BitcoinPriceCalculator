@@ -16,30 +16,30 @@ namespace BitcoinPriceCalculator.Controllers
             _bitcoinService = bitcoinService;
         }
 
-        public IActionResult Index()
+        public IActionResult Create()
         {
-            return View(new PriceCalculatorModel());
+            PriceCalculatorModel model = new PriceCalculatorModel();
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Index(PriceCalculatorModel model)
+        public IActionResult GetBitcoinPrice([FromBody] PriceCalculatorModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     decimal btcPrice = _bitcoinService.BtcCalc(model.PurchaseDate);
-                    ViewBag.BtcPrice = btcPrice.ToString("C2", new System.Globalization.CultureInfo("pt-BR"));
-
-                    return View("~/Views/Home/Index.cshtml", model);
+                    return Json(new { success = true, price = btcPrice.ToString("C2", new System.Globalization.CultureInfo("pt-BR")) });
                 }
                 catch (InvalidOperationException ex)
                 {
-                    ModelState.AddModelError(string.Empty, $"Erro: {ex.Message}");
+                    return Json(new { success = false, error = ex.Message });
                 }
             }
-
-            return View("~/Views/Home/Index.cshtml", model);
+            return Json(new { success = false, error = "Dados inválidos." });
         }
+
     }
 }
