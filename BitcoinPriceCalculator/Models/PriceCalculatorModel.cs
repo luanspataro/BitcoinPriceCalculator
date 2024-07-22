@@ -19,7 +19,6 @@ namespace BitcoinPriceCalculator.Models
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Por favor, selecione uma data.")]
         public DateTime PurchaseDate { get; set; }
-
     }
 
     public class Bitcoin

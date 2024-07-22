@@ -47,14 +47,16 @@ namespace BitcoinPriceCalculator.Models
                     var bitcoin = new Bitcoin();
                     try
                     {
-                        bitcoin.Price = Convert.ToDecimal(worksheet.Cells[row, 1].Value);
+                        bitcoin.Price = Convert.ToDecimal(worksheet.Cells[row, 2].Value);
                     }
                     catch (FormatException ex)
                     {
                         throw new InvalidOperationException("Erro ao converter valor da célula para decimal.", ex);
                     }
 
-                    bitcoin.PriceDate = Convert.ToDateTime(worksheet.Cells[row, Col: 2].Value);
+                    // Lembrar de tirar os catchs após os testes
+
+                    bitcoin.PriceDate = Convert.ToDateTime(worksheet.Cells[row, 1].Value);
 
                     response.Add(bitcoin);
                 }
