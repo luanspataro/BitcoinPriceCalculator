@@ -23,7 +23,7 @@ namespace BitcoinPriceCalculator.Models
                 }
             }
 
-            throw new InvalidOperationException("Data não encontrada");
+            throw new InvalidOperationException("Data não encontrada.");
 
         }
 
