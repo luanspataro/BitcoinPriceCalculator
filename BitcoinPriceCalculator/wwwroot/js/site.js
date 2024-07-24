@@ -20,13 +20,17 @@
                                 .then(data => {
                                     var resultDiv = document.getElementById("result");
     if (data.success) {
-        resultDiv.innerHTML = `<div>
+        resultDiv.innerHTML = `<div class="mb-0">
 <h4 id="btc-title" class="mt-3">Preço do Bitcoin:</h4>
     <p id="btc-title">
         ${data.price}
     </p>
 </div>
-<iframe class="mb-0" src="https://lottie.host/embed/ebe1e058-da64-403f-a849-f6c1926c277c/aipyC1JMq7.json"></iframe>`;
+<div class="d-flex justify-content-center gif">
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+    <dotlottie-player src="https://lottie.host/fbb4a9d1-1d24-4070-9e6a-0aedc8dd7837/sNJww6gjga.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+</div>`;
                                     } else {
         resultDiv.innerHTML = `<p class="text-danger">Erro: ${data.error}</p>`;
                                     }

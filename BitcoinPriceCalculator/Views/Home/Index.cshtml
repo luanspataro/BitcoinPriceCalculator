@@ -25,27 +25,25 @@
 
                     <h5 class="text-white mt-3 mb-4">TESTANDO O TEXTO QUE VAI ESTAR AQUI COM BOOTSTRAP</h5>
 
-                    <div class="mb-2">
-                        <a href="#" class="btn btn-brand me-2">Comece Agora</a>
-                        <a href="#" class="btn btn-light ms-2">Nosso Teste</a>
-                    </div>
-
-                    <form id="bitcoinForm" method="post">
-                        <div class="d-flex justify-content-center">
-                            <div class="form-group w-25">
-                                <label asp-for="PurchaseDate" class="control-label" id="btc-title"></label>
-                                <input asp-for="PurchaseDate" class="form-control" />
-                                <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+                    <div class="element">
+                        <form id="bitcoinForm" method="post">
+                            <div class="d-flex justify-content-center">
+                                <div class="form-group w-75 mt-3">
+                                    <label asp-for="PurchaseDate" class="control-label" id="btc-title"></label>
+                                    <input asp-for="PurchaseDate" class="form-control" />
+                                    <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+                                </div>
                             </div>
-                        </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
-                    </form>
+                        </form>
 
-                    <!-- Btc Price Function -->
-                    <div id="result"></div>
 
-                </div>
-            </div>
+
+                        <!-- Btc Price Function -->
+                        <div id="result"></div>
+                    </div>
+                        </div>
+                    </div>
         </div>
     </section>
 

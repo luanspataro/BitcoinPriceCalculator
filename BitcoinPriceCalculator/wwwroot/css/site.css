@@ -45,6 +45,20 @@ img {
     padding-bottom: 140px;
 }
 
+.element {
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    height: 75%;
+    width: 34%;
+    margin: auto;
+    align-self: center;
+    border-radius: 15px;
+}
+
+.gif {
+    margin-top: -4em
+}
+
 /* Navbar */
 .navbar {
     box-shadow: var(--box-shadow);
@@ -89,7 +103,6 @@ img {
 }
 
 
-
 /* Section Title */
 
 .section-title {
@@ -112,7 +125,6 @@ img {
 #btc-title {
     color: white;
 }
-
 
 @media all and (max-width: 768px) {
     .coin {
