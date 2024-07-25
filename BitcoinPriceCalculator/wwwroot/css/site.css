@@ -1,7 +1,5 @@
 ﻿@import url(../css/clash-display.css);
 
-
-
 :root {
     --c-dark: #212529;
     --c-brand: #4e57d4;
@@ -47,8 +45,8 @@ img {
 
 .element {
     background-color: white;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-    height: 75%;
+    box-shadow: 15px 15px black;
+    height: 77%;
     width: 34%;
     margin: auto;
     align-self: center;
@@ -97,7 +95,8 @@ img {
 /* Hero */
 #hero {
     /*linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), */
-    background: url('../img/Design sem nome.png');
+    /*background: url('../img/Design sem nome.png');*/
+    background: url('../img/roxo.png');
     background-position: center;
     background-size: cover;
 }
@@ -126,8 +125,8 @@ img {
     color: white;
 }
 
-@media all and (max-width: 768px) {
+/*@media all and (max-width: 768px) {
     .coin {
         display: none;
     }
-}
+}*/
