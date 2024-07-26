@@ -45,7 +45,7 @@ img {
 
 .element {
     background-color: white;
-    box-shadow: 15px 15px black;
+    box-shadow: 15px 15px #f2a900;
     height: 77%;
     width: 34%;
     margin: auto;
