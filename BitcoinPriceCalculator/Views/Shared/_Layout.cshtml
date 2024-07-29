@@ -3,13 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BitcoinPriceCalculator</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <title>@ViewData["Title"] - BitcoinPriceCalculator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+    
+
 </head>
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-white pt-1 pb-1">
+    <!-- NAVBAR
+    <nav class="navbar navbar-expand-lg bg-white pt-0 pb-0">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="./img/Bitcoin_logo.svg" height="50" width="200" alt="">
@@ -32,7 +44,34 @@
                 <a href="#" class="btn btn-brand ms-lg-3">Download</a>
             </div>
         </div>
-    </nav>
+    </nav>-->
+
+    <header>
+        <a href="#" class="logo">
+            <i class='bx bxl-bitcoin'></i><span>Logo</span>
+        </a>
+
+        <ul class="navbar">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sobre a Calculadora</a></li>
+            <li><a href="#">Informações</a></li>
+            <li><a href="#">Teste</a></li>
+        </ul>
+
+        <div class="main">
+
+            <!-- Testar remixin -->
+            <a href="#" class=""><i class='bx bx-candles'>Cotação</i></a>
+            <a href="#">Test</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+
+
+
+        <!--js link-->
+        <script type="text/javascript" src="~/js/site.js"></script>
+
+    </header>
 
     <div>
         <main role="main">

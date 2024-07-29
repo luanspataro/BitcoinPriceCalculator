@@ -1,10 +1,22 @@
 ﻿@import url(../css/clash-display.css);
 
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
 :root {
     --c-dark: #212529;
     --c-brand: #4e57d4;
     --c-brand-light: #6970dd;
     --c-brand-rgb: 78, 87, 212;
+    --bg-color: #222327;
+    --text-color: #fff;
+    --main-color: #29fd53;
     --c-body: #727272;
     --font-base: "ClashDisplay", sans-serif;
     --box-shadow: 0px 15px 25px rgba(0,0,0,0.08);
@@ -38,6 +50,21 @@ img {
     height: auto;
 }
 
+.wave-separator {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    background-color: black;
+}
+
+    .wave-separator img {
+        width: 100%;
+        display: block;
+        height: auto;
+    }
+
+
 .section-padding {
     padding-top: 140px;
     padding-bottom: 140px;
@@ -45,19 +72,21 @@ img {
 
 .element {
     background-color: white;
-    box-shadow: 15px 15px #f2a900;
+    box-shadow: 15px 15px black;
+    width: 500px;
+    max-width: 100%;
     height: 77%;
-    width: 34%;
     margin: auto;
     align-self: center;
     border-radius: 15px;
+    overflow: auto;
 }
 
 .gif {
     margin-top: -4em
 }
 
-/* Navbar */
+/* Navbar
 .navbar {
     box-shadow: var(--box-shadow);
 }
@@ -70,13 +99,77 @@ img {
 .navbar-nav .nav-link.active {
     color: var(--c-brand);
 }
+*/
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 28px 12%;
+    transition: all .50s ease;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo i{
+    color: var(--main-color);
+    font-size: 28px;
+    margin-right: 3px;
+}
+
+.logo span{
+    color: var(--text-color);
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.navbar{
+    display: flex;
+}
+
+.navbar a{
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0px 30px;
+    transition: all .50s ease;
+}
+
+.navbar a:hover{
+    color: var(--main-color);
+}
+
+    .navbar a.active {
+        color: var(--main-color);
+    }
+
+.main{
+    display: flex;
+    align-items: center;
+}
+
+.main a{
+    margin-right: 25px;
+    margin-left: 10px;
+    color: var(--text-color);
+}
 
 /* Button */
 .btn {
     font-weight: 600;
     font-size: 14px;
     text-transform: uppercase;
-    border-radius: 0;
+    border-radius: 10px;
     padding: 10px 24px;
 }
 
@@ -102,6 +195,12 @@ img {
     background-size: cover;
 }
 
+/* Border */
+#border {
+    background: url('../img/onda_branca.svg');
+    background-position: center;
+    background-size: cover;
+}
 
 /* Section Title */
 
@@ -122,11 +221,16 @@ img {
     margin-right: auto;
 }
 
+.section-padding {
+    padding-top: 50px;
+    padding-bottom: 140px;
+}
+
 #btc-title {
     color: white;
 }
 
-@media all and (max-width: 768px) {
+/*@media all and (max-width: 768px) {
     #hero {
         linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)),
 background: url('../img/Design sem nome.png');
@@ -135,4 +239,4 @@ background: url('../img/roxo.png');
         background-position: center;
         background-size: cover;
     }
-}
+}*/
