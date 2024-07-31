@@ -18,13 +18,10 @@ namespace BitcoinPriceCalculator.Models
             {
                 if (item.PriceDate.ToShortDateString() == userDate.ToShortDateString())
                 {
-                    Console.WriteLine($"Preco: {item.Price} \nData: {item.PriceDate}\n");
                     return item.Price;
                 }
             }
-
             throw new InvalidOperationException("Data não encontrada.");
-
         }
 
         private static List<Bitcoin> ReadXls()
@@ -39,31 +36,18 @@ namespace BitcoinPriceCalculator.Models
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
                 int colCount = worksheet.Dimension.End.Column;
-
                 int rowCount = worksheet.Dimension.End.Row;
 
                 for (int row = 2; row <= rowCount; row++)
                 {
                     var bitcoin = new Bitcoin();
-                    try
-                    {
-                        bitcoin.Price = Convert.ToDecimal(worksheet.Cells[row, 2].Value);
-                    }
-                    catch (FormatException ex)
-                    {
-                        throw new InvalidOperationException("Erro ao converter valor da célula para decimal.", ex);
-                    }
-
-                    // Lembrar de tirar os catchs após os testes
-
+                    bitcoin.Price = Convert.ToDecimal(worksheet.Cells[row, 2].Value);
                     bitcoin.PriceDate = Convert.ToDateTime(worksheet.Cells[row, 1].Value);
 
                     response.Add(bitcoin);
                 }
             }
-
             return response;
-
         }
     }
 }

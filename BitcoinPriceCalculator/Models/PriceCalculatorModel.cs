@@ -10,9 +10,12 @@ namespace BitcoinPriceCalculator.Models
     {
         public double BTCAmount { get; set; }
         public double Profit { get; set; }
-
-        public string Currency { get; set; }
         public int ActualPrice { get; set; }
+
+        [Display(Name = "Selecione um valor")]
+        [DataType(DataType.Currency)]
+        [Required(ErrorMessage = "Por favor, digite um valor.")]
+        public decimal PurchaseValue { get; set; }
 
 
         [Display(Name = "Selecione uma data")]

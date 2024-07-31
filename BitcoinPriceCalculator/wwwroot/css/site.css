@@ -23,6 +23,11 @@
     --transition: all 0.5s ease;
 }
 
+::selection {
+    background: var(--main-color);
+    color: black;
+}
+
 body {
     font-family: var(--font-base);
     line-height: 1.7;
@@ -82,30 +87,16 @@ img {
     margin: auto;
     align-self: center;
     border-radius: 15px;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .gif {
     margin-top: -4em
 }
 
-/* Navbar
-.navbar {
-    box-shadow: var(--box-shadow);
-}
-
-.navbar-nav .nav-link {
-    font-weight: 500;
-    color: var(--c-dark);
-}
-
-.navbar-nav .nav-link.active {
-    color: var(--c-brand);
-}
-*/
-
+/* Navbar */
 header {
-    position: fixed;
+    position: absolute;
     width: 100%;
     top: 0;
     right: 0;
@@ -201,7 +192,8 @@ header {
         margin: 0px 20px;
     }
 }
-/* Hamburger menu */
+
+/* Hamburger Menu */
 @media (max-width: 1090px) {
     #menu-icon{
         display: block;
@@ -267,15 +259,39 @@ header {
     background-size: cover;
 }
 
-/* Border */
 #border {
     background: url('../img/onda_branca.svg');
     background-position: center;
     background-size: cover;
 }
 
-/* Section Title */
+/* Form */
+.form-row {
+    padding: 5px 5px;
+    display: block;
+}
 
+    .form-row input {
+        padding: 2px 1px;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+label {
+    display: block;
+    margin: 3px 0;
+    color: black;
+}
+
+input.currency {
+    padding-left: 15px;
+}
+
+.form-control:focus {
+    border-color: var(--main-color);
+    border-width: var(--main-color);
+}
+/* Section Title */
 .section-title {
     margin-bottom: 60px;
 }
