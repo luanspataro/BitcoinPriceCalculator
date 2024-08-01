@@ -10,7 +10,7 @@ namespace BitcoinPriceCalculator.Models
     public class BitcoinService
     {
 
-        public decimal BtcCalc(DateTime userDate)
+        public Tuple<decimal, DateTime> BtcCalc(DateTime userDate)
         {
             var sheet = ReadXls();
 
@@ -18,7 +18,8 @@ namespace BitcoinPriceCalculator.Models
             {
                 if (item.PriceDate.ToShortDateString() == userDate.ToShortDateString())
                 {
-                    return item.Price;
+                    var btcData = Tuple.Create(item.Price, item.PriceDate);
+                    return btcData;
                 }
             }
             throw new InvalidOperationException("Data não encontrada.");
