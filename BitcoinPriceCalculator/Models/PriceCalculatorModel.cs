@@ -8,10 +8,6 @@ namespace BitcoinPriceCalculator.Models
 {
     public class PriceCalculatorModel
     {
-        public double BTCAmount { get; set; }
-        public double Profit { get; set; }
-        public int ActualPrice { get; set; }
-
         [Display(Name = "Selecione um valor")]
         [DataType(DataType.Currency)]
         [Required(ErrorMessage = "Por favor, digite um valor.")]
@@ -28,6 +24,11 @@ namespace BitcoinPriceCalculator.Models
     {
         public decimal Price { get; set; }
         public DateTime PriceDate { get; set; }
+
+        public decimal Amount { get; set; }
+        public decimal Percentage { get; set }
+        public decimal Profit { get; set; }
+        public decimal ActualPrice { get; set; }
     }
 
 }

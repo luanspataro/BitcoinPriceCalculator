@@ -28,7 +28,14 @@ namespace BitcoinPriceCalculator.Controllers
             {
                 try
                 {
-                    decimal btcPrice = _bitcoinService.BtcCalc(model.PurchaseDate);
+                    var btcData = _bitcoinService.BtcCalc(model.PurchaseDate);
+                    /*decimal btcPrice = btcData.Item1;
+                    DateTime priceDate = btcData.Item2;*/
+
+                    var profitData = _bitcoinService.ProfitCalc(btcData.Item1, btcData.Item2, ("api price"));
+
+                    decimal amount, decimal percentage, decimal profit = profitData;
+                    /*return Json(new { success = true, price = btcPrice.ToString("C2", new System.Globalization.CultureInfo("pt-BR")) });*/
                     return Json(new { success = true, price = btcPrice.ToString("C2", new System.Globalization.CultureInfo("pt-BR")) });
                 }
                 catch (InvalidOperationException ex)

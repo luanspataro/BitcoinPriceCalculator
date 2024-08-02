@@ -1,4 +1,5 @@
-﻿using OfficeOpenXml;
+﻿using BitcoinPriceCalculator.Models;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +10,24 @@ namespace BitcoinPriceCalculator.Models
 {
     public class BitcoinService
     {
+        public Tuple<decimal, decimal, decimal> ProfitCalc(decimal price, DateTime priceDate, decimal actualPrice)
+        {
+            var bitcoin = new Bitcoin();
+            var model = new PriceCalculatorModel();
+
+            bitcoin.Amount = model.PurchaseValue / price;
+            bitcoin.Percentage = (price / actualPrice - 1) * 100;
+            bitcoin.Profit = actualPrice - price;
+
+            /*qtdecompradabtc;
+            porcentagemlucro;
+            valorfinal;
+            
+            colocar outra cor quando for < 0*/
+
+            var profitData = Tuple.Create(bitcoin.Amount, bitcoin.Percentage, bitcoin.Profit);
+            return profitData;
+        }
 
         public Tuple<decimal, DateTime> BtcCalc(DateTime userDate)
         {
