@@ -314,6 +314,9 @@ input.currency {
     padding-bottom: 140px;
 }
 
-#btc-title {
-    color: white;
+.profit {
+    color: forestgreen
+}
+.loss {
+    color: red;
 }

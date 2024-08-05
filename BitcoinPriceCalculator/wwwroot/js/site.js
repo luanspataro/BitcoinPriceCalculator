@@ -20,11 +20,28 @@
     .then(data => {
         var resultDiv = document.getElementById("result");
         if (data.success) {
-            resultDiv.innerHTML = `<div class="mb-0">
-                <h4 class="mt-3">Preço do Bitcoin:</h4>
+            resultDiv.innerHTML = `
+            <div class="mb-0">
+                <h4 class="mt-3">Quantidade comprada:</h4>
                 <p>
-                ${data.price}
+                ${data.amount} BTC
                 </p>
+
+                <h4 class="mt-3">Valorização:</h4>
+                <p>
+                ${data.percentage} %
+                </p>
+
+                <h4 class="mt-3">Valorização:</h4>
+                        <p class="${data.percentage >= 0 ? 'profit' : 'loss'}">
+                            ${data.percentage} %
+                        </p>
+
+                <h4 class="mt-3">Lucro:</h4>
+                <p>
+                ${data.profit}
+                </p>
+
             </div>
             <div class="d-flex justify-content-center gif">
                 <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>

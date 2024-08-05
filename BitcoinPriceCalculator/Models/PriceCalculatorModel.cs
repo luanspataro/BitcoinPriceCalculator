@@ -26,7 +26,7 @@ namespace BitcoinPriceCalculator.Models
         public DateTime PriceDate { get; set; }
 
         public decimal Amount { get; set; }
-        public decimal Percentage { get; set }
+        public decimal Percentage { get; set; }
         public decimal Profit { get; set; }
         public decimal ActualPrice { get; set; }
     }

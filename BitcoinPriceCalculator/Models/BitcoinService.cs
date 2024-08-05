@@ -10,14 +10,13 @@ namespace BitcoinPriceCalculator.Models
 {
     public class BitcoinService
     {
-        public Tuple<decimal, decimal, decimal> ProfitCalc(decimal price, DateTime priceDate, decimal actualPrice)
+        public Tuple<decimal, decimal, decimal> ProfitCalc(decimal purchasePrice, decimal price, DateTime priceDate, decimal actualPrice)
         {
             var bitcoin = new Bitcoin();
-            var model = new PriceCalculatorModel();
 
-            bitcoin.Amount = model.PurchaseValue / price;
-            bitcoin.Percentage = (price / actualPrice - 1) * 100;
-            bitcoin.Profit = actualPrice - price;
+            bitcoin.Amount = purchasePrice / price;
+            bitcoin.Percentage = (actualPrice / price - 1) * 100;
+            bitcoin.Profit = bitcoin.Amount * actualPrice - purchasePrice;
 
             /*qtdecompradabtc;
             porcentagemlucro;
