@@ -30,8 +30,6 @@ namespace BitcoinPriceCalculator.Controllers
                 try
                 {
                     var btcData = _bitcoinService.BtcCalc(model.PurchaseDate);
-                    /*decimal btcPrice = btcData.Item1;
-                    DateTime priceDate = btcData.Item2;*/
 
                     var profitData = _bitcoinService.ProfitCalc(model.PurchaseValue, btcData.Item1, btcData.Item2, 312000.10m);
 
@@ -39,8 +37,7 @@ namespace BitcoinPriceCalculator.Controllers
                     decimal percentage = profitData.Item2;
                     decimal profit = profitData.Item3;
 
-                    /*return Json(new { success = true, price = btcPrice.ToString("C2", new System.Globalization.CultureInfo("pt-BR")) });*/
-                    return Json(new { success = true, amount = amount.ToString("0.#####"), percentage = percentage.ToString("0.00"), profit = profit.ToString("C2", new System.Globalization.CultureInfo("pt-BR")) });
+                    return Json(new { success = true, amount = amount.ToString("0.#####"), percentage = percentage, profit = profit.ToString("C2", new System.Globalization.CultureInfo("pt-BR")) });
                 }
                 catch (InvalidOperationException ex)
                 {

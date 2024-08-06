@@ -315,7 +315,7 @@ input.currency {
 }
 
 .profit {
-    color: forestgreen
+    color: forestgreen;
 }
 .loss {
     color: red;

@@ -22,25 +22,26 @@
         if (data.success) {
             resultDiv.innerHTML = `
             <div class="mb-0">
-                <h4 class="mt-3">Quantidade comprada:</h4>
+                <h4 class="mt-3">Quantidade comprada</h4>
                 <p>
                 ${data.amount} BTC
                 </p>
 
-                <h4 class="mt-3">Valorização:</h4>
-                <p>
-                ${data.percentage} %
-                </p>
-
-                <h4 class="mt-3">Valorização:</h4>
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <h4 class="">Valorização</h4>
                         <p class="${data.percentage >= 0 ? 'profit' : 'loss'}">
-                            ${data.percentage} %
+                            ${data.percentage.toFixed(2)} %
                         </p>
+                </div>
 
-                <h4 class="mt-3">Lucro:</h4>
-                <p>
-                ${data.profit}
-                </p>
+                <div class="col-4">
+                    <h4 class="">Lucro R$</h4>
+                        <p class="${data.percentage >= 0 ? 'profit' : 'loss'}">
+                            ${data.profit}
+                        </p>
+                    </div>
+                </div>
 
             </div>
             <div class="d-flex justify-content-center gif">
