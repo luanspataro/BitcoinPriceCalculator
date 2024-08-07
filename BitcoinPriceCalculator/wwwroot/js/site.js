@@ -20,6 +20,37 @@
     .then(data => {
         var resultDiv = document.getElementById("result");
         if (data.success) {
+
+            const element = document.querySelector('.element');
+            const animationIframe = document.createElement('iframe');
+            animationIframe.src = "https://lottie.host/embed/31e3a97c-2bec-453f-acdf-741f597ed546/9IX32tADqW.json";
+            animationIframe.style.width = "55vw";
+            animationIframe.style.height = "35vh";
+            animationIframe.style.border = "none";
+            animationIframe.style.position = "absolute";
+            animationIframe.style.top = "65%";
+            animationIframe.style.left = "50%";
+            animationIframe.style.transform = "translate(-50%, -50%)";
+            animationIframe.style.display = "none";
+            document.body.appendChild(animationIframe);
+
+            element.classList.add('shrink');
+
+            setTimeout(() => {
+                animationIframe.style.display = 'block';
+
+                setTimeout(() => {
+                    animationIframe.style.display = 'none';
+
+                    element.classList.remove('shrink');
+                    element.classList.add('grow');
+
+                    setTimeout(() => {
+                        element.classList.remove('grow');
+                    }, 1000);
+                }, 2700);
+            }, 500);
+
             resultDiv.innerHTML = `
             <div class="mb-0">
                 <h4 class="mt-3">Quantidade comprada</h4>
