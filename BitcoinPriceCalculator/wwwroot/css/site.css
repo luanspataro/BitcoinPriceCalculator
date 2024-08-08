@@ -330,3 +330,31 @@ input.currency {
 .loss {
     color: red;
 }
+
+@keyframes moveUp {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-40px);
+    }
+}
+
+.move-up {
+    animation: moveUp 1s forwards;
+}
+
+@keyframes moveDown {
+    from {
+        transform: translateY(-40px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.move-down {
+    animation: moveDown 1s forwards;
+}
