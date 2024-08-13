@@ -1,4 +1,5 @@
 ﻿using BitcoinPriceCalculator.Models;
+using BitcoinPriceCalculator.Integration.Response;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -23,15 +24,16 @@ namespace BitcoinPriceCalculator.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetBitcoinPrice([FromBody] PriceCalculatorModel model)
+        public async Task<IActionResult> GetBitcoinPriceAsync([FromBody] PriceCalculatorModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     var btcData = _bitcoinService.BtcCalc(model.PurchaseDate);
+                    BitPrecoResponse response = await _bitcoinService.Integration();
 
-                    var profitData = _bitcoinService.ProfitCalc(model.PurchaseValue, btcData.Item1, btcData.Item2, 312000.10m);
+                    var profitData = _bitcoinService.ProfitCalc(model.PurchaseValue, btcData.Item1, btcData.Item2, response.Avg);
 
                     decimal amount = profitData.Item1;
                     decimal percentage = profitData.Item2;

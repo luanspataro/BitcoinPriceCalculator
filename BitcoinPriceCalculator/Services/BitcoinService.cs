@@ -1,15 +1,37 @@
 ﻿using BitcoinPriceCalculator.Models;
+using BitcoinPriceCalculator.Integration.Response;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace BitcoinPriceCalculator.Models
 {
     public class BitcoinService
     {
+        public async Task<BitPrecoResponse> Integration()
+        {
+            HttpClient httpClient = new HttpClient();
+            var response = await httpClient.GetAsync($"https://api.bitpreco.com/btc-brl/ticker");
+            var jsonString = await response.Content.ReadAsStringAsync();
+
+            var jsonObject = JsonConvert.DeserializeObject<BitPrecoResponse>(jsonString);
+
+            if(jsonObject != null)
+            {
+                return jsonObject;
+            }
+
+            return new BitPrecoResponse
+            {
+                Error = true
+            };
+        }
+
         public Tuple<decimal, decimal, decimal> ProfitCalc(decimal purchasePrice, decimal price, DateTime priceDate, decimal actualPrice)
         {
             var bitcoin = new Bitcoin();
@@ -17,12 +39,6 @@ namespace BitcoinPriceCalculator.Models
             bitcoin.Amount = purchasePrice / price;
             bitcoin.Percentage = (actualPrice / price - 1) * 100;
             bitcoin.Profit = bitcoin.Amount * actualPrice - purchasePrice;
-
-            /*qtdecompradabtc;
-            porcentagemlucro;
-            valorfinal;
-            
-            colocar outra cor quando for < 0*/
 
             var profitData = Tuple.Create(bitcoin.Amount, bitcoin.Percentage, bitcoin.Profit);
             return profitData;
