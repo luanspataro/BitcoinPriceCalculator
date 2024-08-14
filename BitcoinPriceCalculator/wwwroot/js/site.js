@@ -9,6 +9,9 @@
         jsonData[key] = value;
     });
 
+    var submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+
     fetch("/Bitcoin/GetBitcoinPrice", {
         method: "POST",
         headers: {
@@ -79,14 +82,18 @@
                         setTimeout(() => {
                             element.classList.remove('grow');
 
+                            submitButton.disabled = false;
+
                         }, 1000);
                     }, 2700);
                 }, 500);
             } else {
                 resultDiv.innerHTML = `<p class="text-danger">Erro: ${data.error}</p>`;
+                submitButton.disabled = false;
             }
         })
         .catch(error => {
             console.error("Erro:", error);
+            submitButton.disabled = false;
         });
 });
