@@ -23,9 +23,15 @@
         .then(data => {
             var resultDiv = document.getElementById("result");
             if (data.success) {
+                var existingIframe = document.querySelector('iframe.animation-iframe');
+                if (existingIframe) {
+                    existingIframe.remove();
+                }
+
                 const element = document.querySelector('.element');
                 const animationIframe = document.createElement('iframe');
-                animationIframe.src = "https://lottie.host/embed/31e3a97c-2bec-453f-acdf-741f597ed546/9IX32tADqW.json";
+                animationIframe.src = "https://lottie.host/embed/5f28d8e3-c237-4dad-af92-c774bfdb6130/gwbWvm54N5.json";
+                animationIframe.className = 'animation-iframe';
                 animationIframe.style.width = "55vw";
                 animationIframe.style.height = "35vh";
                 animationIframe.style.border = "none";
@@ -58,32 +64,37 @@
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="d-flex justify-content-center gif">
-                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-                    <dotlottie-player src="https://lottie.host/fbb4a9d1-1d24-4070-9e6a-0aedc8dd7837/sNJww6gjga.json" background="transparent" speed="1" style="width: 200px; height: 230px;" loop autoplay></dotlottie-player>
                 </div>`;
 
                 const initialText = document.querySelector('.initial-text');
                 initialText.classList.add('move-up');
 
                 setTimeout(() => {
+                    animationIframe.classList.add('grow');
                     animationIframe.style.display = 'block';
 
+
                     setTimeout(() => {
-                        animationIframe.style.display = 'none';
+
+                        animationIframe.classList.remove('grow')
+                        animationIframe.classList.add('shrink')
+
+                        setTimeout(() => { 
 
                         element.classList.remove('shrink');
-                        element.classList.add('grow');
+                            element.classList.add('grow');
+
+                            animationIframe.style.display = 'none';
 
                         resultDiv.innerHTML = resultHTML;
                         initialText.classList.add('move-down');
 
-                        setTimeout(() => {
-                            element.classList.remove('grow');
+                            setTimeout(() => {
+                                element.classList.remove('grow');
 
-                            submitButton.disabled = false;
+                                submitButton.disabled = false;
 
+                            }, 300);
                         }, 1000);
                     }, 2700);
                 }, 500);

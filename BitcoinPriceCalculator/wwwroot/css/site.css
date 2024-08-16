@@ -87,7 +87,7 @@ img {
     align-self: center;
     border-radius: 15px;
     overflow: hidden;
-    transition: 0.5s cubic-bezier(.01,.34,1,.76);
+    transition: 0.5s cubic-bezier(.18,.08,.32,.99);
     padding: 10px;
 }
 
@@ -340,7 +340,7 @@ input.currency {
     }
 
     to {
-        transform: translateY(-25px);
+        transform: translateY(-12px);
     }
 }
 
@@ -350,7 +350,7 @@ input.currency {
 
 @keyframes moveDown {
     from {
-        transform: translateY(-25px);
+        transform: translateY(-12px);
     }
 
     to {
@@ -360,4 +360,12 @@ input.currency {
 
 .move-down {
     animation: moveDown 1s forwards;
+}
+
+/* Info Page */
+
+.info {
+    background: url("../img/Info.jpg");
+    background-position: center;
+    background-size: cover;
 }

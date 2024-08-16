@@ -1,7 +1,7 @@
 ﻿@model BitcoinPriceCalculator.Models.PriceCalculatorModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Bitcoin - Calculadora de tempo";
 }
 
 <!doctype html>
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="~/css/site.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <script src="~/js/site.js"></script>
-    <title>Bitcoin - Calculadora de tempo</title>
+    <title>@ViewData["Title"]</title>
 </head>
 <body>
 
@@ -28,7 +28,7 @@
                         <i class="fa-brands fa-bitcoin fa-sm" style="color: #f2a900;"></i>
                     </h1>
 
-                    <h6 class="text-white mt-3 mb-4 initial-text">QUANTO VOCÊ TERIA SE TIVESSE COMPRADO BITCOIN?</h6>
+                    <h6 class="text-white mt-3 mb-4 initial-text">QUANTO VOCÊ GANHARIA SE TIVESSE COMPRADO BITCOIN?</h6>
 
                     <div class="element">
                         <form id="bitcoinForm" method="post">
@@ -37,7 +37,7 @@
                                 <div class="form-group w-75 mt-3">
                                     <div class="form-row hide-inputbtns">
                                         <label asp-for="PurchaseValue" for="c1"></label>
-                                        <input asp-for="PurchaseValue" type="number" placeholder="1000" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="currency form-control shadow-none" id="c1" />
+                                        <input asp-for="PurchaseValue" type="number" placeholder="1000" min="1" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="currency form-control shadow-none" id="c1" />
                                     </div>
 
                                     <label asp-for="PurchaseDate" class="control-label"></label>
@@ -71,27 +71,22 @@
                         <div class="line mb-0"></div>
 
                         <!-- Animation -->
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center mt-3">
                             <script src="https://unpkg.com/@@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
                             <dotlottie-player src="https://lottie.host/0c901d3c-5935-44c2-9ea3-04ee744c8dea/ALCTGL2HLu.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
                         </div>
 
-                        <i class="fa-brands fa-bitcoin fa-lg"></i>
-
-                        <p>
+                        <p class="mt-3">
                             A calculadora tem o objetivo de simular o quanto você ganharia caso tivesse comprado bitcoin
                             em determinada data. Com base no preço médio do dia escolhido, é feito o cálculo do valor
-                            e percentual de lucro. Se for iniciante e quiser entender melhor o Bitcoin, clique na moeda
-
+                            e percentual de lucro. Se for iniciante e quiser entender melhor o Bitcoin, clique 
+                            <a href="https://proton.me/pt-br/wallet/bitcoin-guide-for-newcomers" target="_blank" rel="noopener noreferrer" style="color: #f2a900">aqui.</a>
                         </p>
 
-                    </div>
-                </div>
-            </div>
+                        
+                        <i class="ri-token-swap-fill fa-xl"></i>
 
-            <div class="row">
-                <div class="col-lg-6">
-                    <img src="" alt="">
+                    </div>
                 </div>
             </div>
         </div>

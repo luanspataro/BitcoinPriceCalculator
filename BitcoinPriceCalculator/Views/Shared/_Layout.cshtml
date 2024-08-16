@@ -20,17 +20,21 @@
 
     <header>
         <a href="#" class="logo">
-            <i class='bx bxl-bitcoin'></i><span>Rebit</span>
+            <i class='bx bxl-bitcoin'></i><span>Bitcóio</span>
         </a>
 
         <ul class="navbar">
-            <li><a href="#">Home</a></li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
             <li><a href="#">Sobre</a></li>
-            <li><a href="#">Informações</a></li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Info">Informações</a>
+            </li>
         </ul>
 
         <div class="main">
-            <a href="#" class="user"><i class='bx bx-candles'></i>Cotação</a>
+            <a href="https://coinmarketcap.com/pt-br/currencies/bitcoin/" target="_blank" rel="noopener noreferrer" class="user"><i class='bx bx-candles'></i>Cotação</a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
