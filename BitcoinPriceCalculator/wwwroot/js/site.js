@@ -44,6 +44,11 @@
 
                 element.classList.add('shrink');
 
+                animationIframe.style.display = 'block';
+                requestAnimationFrame(() => {
+                    animationIframe.classList.add('show');
+                });
+
                 const resultHTML = `
                 <div class="mb-0 result-content">
                     <h4 class="mt-3">Quantidade comprada</h4>
@@ -69,35 +74,30 @@
                 const initialText = document.querySelector('.initial-text');
                 initialText.classList.add('move-up');
 
-                setTimeout(() => {
-                    animationIframe.classList.add('grow');
-                    animationIframe.style.display = 'block';
-
-
+               
                     setTimeout(() => {
 
-                        animationIframe.classList.remove('grow')
-                        animationIframe.classList.add('shrink')
+                        animationIframe.classList.add('hide');
 
                         setTimeout(() => { 
 
-                        element.classList.remove('shrink');
+                            element.classList.remove('shrink');
                             element.classList.add('grow');
 
                             animationIframe.style.display = 'none';
 
-                        resultDiv.innerHTML = resultHTML;
-                        initialText.classList.add('move-down');
+                            resultDiv.innerHTML = resultHTML;
+                            initialText.classList.remove('move-up');
+                            initialText.classList.add('move-down');
 
                             setTimeout(() => {
-                                element.classList.remove('grow');
 
+                                element.classList.remove('grow');
                                 submitButton.disabled = false;
 
                             }, 300);
                         }, 1000);
                     }, 2700);
-                }, 500);
             } else {
                 resultDiv.innerHTML = `<p class="text-danger">Erro: ${data.error}</p>`;
                 submitButton.disabled = false;

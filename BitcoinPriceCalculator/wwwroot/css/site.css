@@ -130,7 +130,8 @@ header {
     .logo i {
         color: var(--main-color);
         font-size: 28px;
-        margin-right: 3px;
+        margin-inline-end: 0;
+        padding-inline-end: 0;
     }
 
     .logo span {
@@ -304,7 +305,9 @@ input.currency {
     border-color: var(--main-color);
     border-width: var(--main-color);
 }
+
 /* Section Title */
+
 .section-title {
     margin-bottom: 60px;
 }
@@ -369,3 +372,19 @@ input.currency {
     background-position: center;
     background-size: cover;
 }
+
+.animation-iframe {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+    .animation-iframe.show {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .animation-iframe.hide {
+        opacity: 0;
+        transform: scale(0.9);
+    }
