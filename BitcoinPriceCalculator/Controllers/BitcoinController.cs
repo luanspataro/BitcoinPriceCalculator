@@ -12,7 +12,7 @@ namespace BitcoinPriceCalculator.Controllers
     public class BitcoinController : Controller
     {
         private readonly BitcoinService _bitcoinService;
-        
+
         public BitcoinController(BitcoinService bitcoinService)
         {
             _bitcoinService = bitcoinService;
@@ -33,13 +33,20 @@ namespace BitcoinPriceCalculator.Controllers
                     var btcData = _bitcoinService.BtcCalc(model.PurchaseDate);
                     BitPrecoResponse response = await _bitcoinService.Integration();
 
-                    var profitData = _bitcoinService.ProfitCalc(model.PurchaseValue, btcData.Item1, btcData.Item2, response.Avg);
+                    
+                    var profitData = _bitcoinService.ProfitCalc(model.PurchaseValue, btcData.Price, response.Avg);
 
-                    decimal amount = profitData.Item1;
-                    decimal percentage = profitData.Item2;
-                    decimal profit = profitData.Item3;
+                    decimal amount = profitData.Amount;
+                    decimal percentage = profitData.Percentage;
+                    decimal profit = profitData.Profit;
 
-                    return Json(new { success = true, amount = amount.ToString("0.#####"), percentage = percentage, profit = profit.ToString("C2", new System.Globalization.CultureInfo("pt-BR")) });
+                    return Json(new
+                    {
+                        success = true,
+                        amount = amount.ToString("0.#####"),
+                        percentage = percentage,
+                        profit = profit.ToString("C2", new System.Globalization.CultureInfo("pt-BR"))
+                    });
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -50,3 +57,4 @@ namespace BitcoinPriceCalculator.Controllers
         }
     }
 }
+    

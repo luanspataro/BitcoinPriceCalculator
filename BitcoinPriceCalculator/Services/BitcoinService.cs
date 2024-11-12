@@ -32,38 +32,33 @@ namespace BitcoinPriceCalculator.Models
             };
         }
 
-        public Tuple<decimal, decimal, decimal> ProfitCalc(decimal purchasePrice, decimal price, DateTime priceDate, decimal actualPrice)
+        public ProfitResult ProfitCalc(decimal purchasePrice, decimal purchaseRate, decimal actualPrice)
         {
-            var bitcoin = new Bitcoin();
 
-            bitcoin.Amount = purchasePrice / price;
-            bitcoin.Percentage = (actualPrice / price - 1) * 100;
-            bitcoin.Profit = bitcoin.Amount * actualPrice - purchasePrice;
+            decimal amount = purchasePrice / purchaseRate;
+            decimal percentage = (actualPrice / purchaseRate - 1) * 100;
+            decimal profit = amount * actualPrice - purchasePrice;
 
-            var profitData = Tuple.Create(bitcoin.Amount, bitcoin.Percentage, bitcoin.Profit);
-            return profitData;
+            return new ProfitResult { Amount = amount, Percentage = percentage, Profit = profit };
         }
 
-        public Tuple<decimal, DateTime> BtcCalc(DateTime userDate)
+        public Bitcoin BtcCalc(DateTime userDate)
         {
             var sheet = ReadXls();
 
-            foreach (var item in sheet)
-            {
-                if (item.PriceDate.ToShortDateString() == userDate.ToShortDateString())
-                {
-                    var btcData = Tuple.Create(item.Price, item.PriceDate);
-                    return btcData;
-                }
-            }
-            throw new InvalidOperationException("Data não encontrada.");
+            var items = sheet
+                .FirstOrDefault(item => item.PriceDate.ToShortDateString() == userDate.ToShortDateString())
+                ?? throw new InvalidOperationException("Data não encontrada.");
+
+            return items;
         }
 
         private static List<Bitcoin> ReadXls()
         {
             var response = new List<Bitcoin>();
 
-            FileInfo existingFile = new FileInfo(@"X:\repositorios\Luan\BitcoinPriceCalculator\BitcoinPriceCalculator\Models\BitcoinDatePriceBRL.xlsx");
+            string relativePath = @"Models\BitcoinDatePriceBRL.xlsx";
+            FileInfo existingFile = new FileInfo(relativePath);
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
