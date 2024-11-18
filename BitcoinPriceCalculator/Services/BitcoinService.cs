@@ -34,7 +34,6 @@ namespace BitcoinPriceCalculator.Models
 
         public ProfitResult ProfitCalc(decimal purchasePrice, decimal purchaseRate, decimal actualPrice)
         {
-
             decimal amount = purchasePrice / purchaseRate;
             decimal percentage = (actualPrice / purchaseRate - 1) * 100;
             decimal profit = amount * actualPrice - purchasePrice;
