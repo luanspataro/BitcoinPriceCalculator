@@ -51,8 +51,11 @@
 
                 const resultHTML = `
                 <div class="mb-0 result-content">
-                    <h4 class="mt-3">Quantidade comprada</h4>
+                    <h4 class="mt-3">Quantidade</h4>
                     <p>${data.amount} BTC</p>
+
+                    <h4 class="mt-3">Total</h4>
+                    <p>${data.total} BTC</p>
 
                     <div class="row justify-content-center">
                         <div class="col-4">

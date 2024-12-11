@@ -39,13 +39,15 @@ namespace BitcoinPriceCalculator.Controllers
                     decimal amount = profitData.Amount;
                     decimal percentage = profitData.Percentage;
                     decimal profit = profitData.Profit;
+                    decimal total = profitData.Total;
 
                     return Json(new
                     {
                         success = true,
                         amount = amount.ToString("0.#####"),
                         percentage = percentage,
-                        profit = profit.ToString("C2", new System.Globalization.CultureInfo("pt-BR"))
+                        profit = profit.ToString("C2", new System.Globalization.CultureInfo("pt-BR")),
+                        total = total.ToString("0.##")
                     });
                 }
                 catch (InvalidOperationException ex)

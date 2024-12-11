@@ -22,9 +22,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 section-padding">
-                    <h1 class="text-uppercase text-white fw-semibold display-1 mt-1 initial-text">
-                        Welcome to
-                        <span style="color: #f2a900">test</span>
+                    <h1 class="text-uppercase text-white fw-semibold display-4 mt-1 initial-text">
+                        Quanto você
+                        <span style="color: #f2a900">teria?</span>
                         <i class="fa-brands fa-bitcoin fa-sm" style="color: #f2a900;"></i>
                     </h1>
 
@@ -41,7 +41,7 @@
                                     </div>
 
                                     <label asp-for="PurchaseDate" class="control-label"></label>
-                                    <input asp-for="PurchaseDate" class="form-control shadow-none" max="@DateTime.Now.ToString("2025-12-25")" min="@DateTime.Now.AddYears(-1).ToString("2010-07-17")" />
+                                    <input asp-for="PurchaseDate" class="form-control shadow-none" max="@DateTime.Now.ToString("yyyy-MM-dd")" min="@DateTime.Now.AddYears(-1).ToString("2010-07-17")" />
                                     <span asp-validation-for="PurchaseDate" class="text-danger"></span>
                                 </div>
                             </div>

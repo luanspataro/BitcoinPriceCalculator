@@ -37,8 +37,9 @@ namespace BitcoinPriceCalculator.Models
             decimal amount = purchasePrice / purchaseRate;
             decimal percentage = (actualPrice / purchaseRate - 1) * 100;
             decimal profit = amount * actualPrice - purchasePrice;
+            decimal total = amount * actualPrice;
 
-            return new ProfitResult { Amount = amount, Percentage = percentage, Profit = profit };
+            return new ProfitResult { Amount = amount, Percentage = percentage, Profit = profit, Total = total };
         }
 
         public Bitcoin BtcCalc(DateTime userDate)
