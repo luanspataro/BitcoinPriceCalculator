@@ -57,7 +57,7 @@ namespace BitcoinPriceCalculator.Models
         {
             var response = new List<Bitcoin>();
 
-            string relativePath = @"Models\BitcoinDatePriceBRL.xlsx";
+            string relativePath = @"Data\BitcoinDatePriceBRL.xlsx";
             FileInfo existingFile = new FileInfo(relativePath);
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
